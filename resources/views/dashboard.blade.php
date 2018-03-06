@@ -13,9 +13,7 @@
 
                         <div class="col-md-4">
 
-                            <p>
-                                <a href="" class="btn btn-primary">TAMBAH MAKLUMAT ACC</a>
-                            </p>
+                            @include('modal_tambah_maklumat_akaun')
                             
                         </div>
                         <div class="col-md-8">
@@ -60,7 +58,7 @@
                                 <th>BIL</th>
                                 <th>NO BAUCAR</th>
                                 <th>BAYAR KEPADA</th>
-                                <th>KETERNAGAN</th>
+                                <th>KETERANGAN</th>
                                 <th>JUMLAH</th>
                                 <th>JENIS ACC</th>
                                 <th>TINDAKAN</th>
