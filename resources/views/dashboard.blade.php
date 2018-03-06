@@ -41,7 +41,7 @@
                         <div class="col-md-8">
 
                             <div class="float-right">
-                            <button type="button" class="btn btn-primary">TAMBAH</button>
+                            <a href="{{ route('duk.create') }}" class="btn btn-primary">TAMBAH</a>
                             </div>
 
                         </div>

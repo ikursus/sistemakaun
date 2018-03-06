@@ -23,7 +23,7 @@ class DukController extends Controller
      */
     public function create()
     {
-        //
+        return view('duk.tambah');
     }
 
     /**
