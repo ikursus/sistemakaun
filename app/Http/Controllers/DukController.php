@@ -23,7 +23,7 @@ class DukController extends Controller
      */
     public function create()
     {
-        return view('duk.tambah');
+        return view('duk/tambah');
     }
 
     /**
@@ -45,7 +45,7 @@ class DukController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

@@ -32,7 +32,7 @@ class AkaunController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function save(Request $request)
+    public function simpan(Request $request)
     {
         //
     }
@@ -45,7 +45,7 @@ class AkaunController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('akaun/detail', compact('id'));
     }
 
     /**
