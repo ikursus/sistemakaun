@@ -34,7 +34,18 @@ class DukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data dari borang
+        $request->validate([
+            'daripada' => 'required',
+            'bayar_kepada' => 'required',
+            'debit' => 'numeric',
+            'kredit' => 'numeric'
+        ]);
+
+        // Dapatkan semua data dari borang
+        $data = $request->all();
+
+        return $data;
     }
 
     /**

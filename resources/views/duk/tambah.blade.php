@@ -5,7 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
 
-<form method="POST" action="{{ route('akaun.simpan') }}">
+        	@include('layouts/alerts')
+
+<form method="POST" action="{{ route('duk.store') }}">
+
+@csrf
+
             <div class="card">
                 <div class="card-header">BORANG TAMBAH DATA UNIT KEWANGAN</div>
 

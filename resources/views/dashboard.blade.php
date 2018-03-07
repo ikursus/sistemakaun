@@ -13,7 +13,7 @@
 
                         <div class="col-md-4">
 
-                            @include('modal_tambah_maklumat_akaun')
+                            @include('akaun/modal_tambah_maklumat_akaun')
                             
                         </div>
                         <div class="col-md-8">
@@ -27,7 +27,7 @@
                             <a href="{{ route('akaun.show', ['id' => 'account_3']) }}" class="btn btn-secondary">ACC 3</a>
 
                             <a href="{{ route('akaun.show', ['id' => 'account_4']) }}" class="btn btn-secondary">ACC 4</a>
-                            
+
                             </div>
 
                         </div>

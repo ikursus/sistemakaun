@@ -7,6 +7,10 @@
 
 <form method="POST" action="{{ route('akaun.simpan') }}">
 
+{{-- csrf_field() // apa apa komen --}}
+
+@csrf
+
 <!-- Modal -->
 <div class="modal fade" id="modal-tambah-maklumat-akaun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">

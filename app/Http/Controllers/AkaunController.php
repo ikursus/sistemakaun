@@ -34,7 +34,10 @@ class AkaunController extends Controller
      */
     public function simpan(Request $request)
     {
-        //
+        // Dapatkan semua data daripada borang
+        $data = $request->all();
+
+        return $data;
     }
 
     /**
