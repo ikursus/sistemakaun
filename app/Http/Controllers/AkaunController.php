@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AccountDetail;
 
 class AkaunController extends Controller
 {
@@ -48,7 +49,11 @@ class AkaunController extends Controller
      */
     public function show($id)
     {
-        return view('akaun/detail', compact('id'));
+        // Dapatkan detail maklumat akaun berdasarkan jenis akaun
+        $account = AccountDetail::where('jenis_akaun', '=', $id)->first();
+
+        // Paparkan template detail bersama data account
+        return view('akaun/detail', compact('account'));
     }
 
     /**

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Detail Akaun - {{ $id }}</div>
+                <div class="card-header">Detail Akaun - {{ $account->jenis_akaun }}</div>
 
                 <div class="card-body">
 
@@ -74,14 +74,14 @@
                         <tbody>
 
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $account->id }}</td>
+                                <td>{{ $account->no_kelompok }}</td>
+                                <td>{{ $account->bayar_kepada }}</td>
+                                <td>{{ $account->keterangan }}</td>
+                                <td>{{ $account->bahagian_unit }}</td>
+                                <td>{{ $account->debit }}</td>
+                                <td>{{ $account->kredit }}</td>
+                                <td>{{ $account->kredit - $account->debit}}</td>
                                 <td>
                                     <a href="" class="btn btn-sm btn-info">READ</a>
                                     <a href="" class="btn btn-sm btn-danger">DELETE</a>

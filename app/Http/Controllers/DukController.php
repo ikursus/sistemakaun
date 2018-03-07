@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Panggil Model AccountDetail
+use App\AccountDetail;
 
 class DukController extends Controller
 {
@@ -45,7 +47,11 @@ class DukController extends Controller
         // Dapatkan semua data dari borang
         $data = $request->all();
 
-        return $data;
+        // Simpan data ke dalam table account_details
+        $account = AccountDetail::create($data);
+
+        // Beri response kembali ke halaman detail akaun kewangan
+        return redirect()->route('akaun.show', ['id' => $account->jenis_akaun])->with('mesej-sukses', 'Rekod berjaya ditambah.');
     }
 
     /**

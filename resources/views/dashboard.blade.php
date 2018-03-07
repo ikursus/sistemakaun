@@ -73,15 +73,17 @@
 
                         <tbody>
 
+                            @foreach( $accounts as $item )
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->no_baucar }}</td>
+                                <td>{{ $item->bayar_kepada }}</td>
+                                <td>{{ $item->keterangan }}</td>
+                                <td>{{ $item->kredit }}</td>
+                                <td>{{ str_replace('account_', 'Account ', $item->jenis_akaun) }}</td>
                                 <td></td>
                             </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

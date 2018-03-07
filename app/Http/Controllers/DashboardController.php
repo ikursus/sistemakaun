@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AccountDetail;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $accounts = AccountDetail::orderBy('id', 'desc')
+        ->paginate(2);
+
+        return view('dashboard', compact('accounts'));
     }
 
     /**
