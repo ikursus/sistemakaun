@@ -77,7 +77,11 @@ class DukController extends Controller
      */
     public function edit($id)
     {
-        //
+      // Dapatkan rekod duk berdasarkan ID
+      $duk = AccountDetail::find($id);
+
+      // Beri respon papar template read.blade.php
+      return view('duk/edit', compact('duk') );
     }
 
     /**
@@ -89,7 +93,25 @@ class DukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // Validasi data dari borang
+      $request->validate([
+          'daripada' => 'required',
+          'bayar_kepada' => 'required',
+          'debit' => 'numeric',
+          'kredit' => 'numeric'
+      ]);
+
+      // Dapatkan semua data dari borang jika tiada masalah dengan validasi
+      $data = $request->all();
+
+      // Kemaskini data ke dalam table account_details berdasarkan ID account
+      $duk = AccountDetail::find($id);
+      $duk->update($data);
+
+      // Beri response kembali ke halaman detail akaun kewangan
+      return redirect()
+      ->route('duk.show', ['id' => $id])
+      ->with('mesej-sukses', 'Rekod berjaya dikemaskini.');
     }
 
     /**
@@ -100,6 +122,11 @@ class DukController extends Controller
      */
     public function destroy($id)
     {
-        //
+      // Hapuskan data berdasarkan ID dari table account_details
+      $duk = AccountDetail::find($id);
+      $duk->delete();
+
+      // Beri response kembali ke halaman dashboard bersama mesej berjaya
+      return redirect()->route('dashboard')->with('mesej-sukses', 'Rekod berjaya dihapuskan');
     }
 }

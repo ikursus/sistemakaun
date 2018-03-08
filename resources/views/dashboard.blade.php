@@ -39,7 +39,9 @@
                         <div class="col-md-4">
 
                             <select name="tahun" class="form-control">
-                                <option>{{ date('Y') }}</option>
+                                @foreach( $tahun as $item )
+                                <option value="{{ $item->tahun }}">{{ $item->tahun }}</option>
+                                @endforeach
                             </select>
 
                         </div>
@@ -73,16 +75,18 @@
 
                         <tbody>
 
-                            @foreach( $accounts as $item )
+                            @foreach( $account_details as $duk )
                             <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->no_baucar }}</td>
-                                <td>{{ $item->bayar_kepada }}</td>
-                                <td>{{ $item->keterangan }}</td>
-                                <td>{{ $item->kredit }}</td>
-                                <td>{{ str_replace('account_', 'Account ', $item->jenis_akaun) }}</td>
+                                <td>{{ $duk->id }}</td>
+                                <td>{{ $duk->no_baucar }}</td>
+                                <td>{{ $duk->bayar_kepada }}</td>
+                                <td>{{ $duk->keterangan }}</td>
+                                <td>{{ $duk->kredit }}</td>
+                                <td>{{ str_replace('account_', 'Account ', $duk->jenis_akaun) }}</td>
                                 <td>
-                                  <a href="{{ route('duk.show', ['id' => $item->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i></a>
+                                  <a href="{{ route('duk.show', ['id' => $duk->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i></a>
+                                  <a href="{{ route('duk.edit', ['id' => $duk->id]) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                  @include('/duk/modal_delete')
                                 </td>
                             </tr>
                             @endforeach

@@ -1,17 +1,28 @@
 <?php
-// Guest pages
+/*
+ * Route berkaitan Halaman Umum
+ */
 Route::get('/', 'PagesController@index');
 Route::get('/hubungi', 'PagesController@hubungi');
 
-// Authentication
+/*
+ * Route berkaitan Login / Logout / Register / Password Reset
+ */
 Auth::routes();
 
-// Dashboard
+/*
+ * Route berkaitan Ruangan Dashboard
+ */
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-// Simpan Maklumat Akaun
-Route::post('/tambah-maklumat-akaun', 'AkaunController@simpan')->name('akaun.simpan');
-Route::get('/detail-akaun/{id}', 'AkaunController@show')->name('akaun.show');
+/*
+ * Route berkaitan Akaun
+ */
+
+// Route untuk proses data borang dari modal dashboard dan simpan rekod ke dalam table akaun
+Route::post('/akaun/add', 'AkaunController@simpan')->name('akaun.simpan');
+// Route untuk paparkan maklumat detail akaun berdasarkan jenis akaun
+Route::get('/akaun/{jenis_akaun}', 'AkaunController@show')->name('akaun.show');
 
 /*
  * Route berkaitan Data Unit Kewangan

@@ -5,14 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Detail Akaun - {{ $account->jenis_akaun }}</div>
+                <div class="card-header">Detail Akaun - {{ str_replace('account_', 'Akaun ', $jenis_akaun) }}</div>
 
                 <div class="card-body">
 
                     <div class="row">
 
                         <div class="col-md-6">
-                            
+
+                          <div class="table-responsive">
+
                             <table class="table">
 
                                 <colgroup>
@@ -22,15 +24,15 @@
 
                                 <tr>
                                     <td>TAHUN</td>
-                                    <td>2018</td>
+                                    <td>{{ $account->tahun }}</td>
                                 </tr>
                                 <tr>
                                     <td>JENIS BANK</td>
-                                    <td>ACCOUNT 1</td>
+                                    <td>{{ $account->jenis_bank }}</td>
                                 </tr>
                                 <tr>
                                     <td>JENIS ACC</td>
-                                    <td>BANK ISLAM</td>
+                                    <td>{{ str_replace('account_', 'Akaun ', $jenis_akaun) }}</td>
                                 </tr>
                                 <tr>
                                     <td>JUMLAH DEBIT</td>
@@ -42,17 +44,18 @@
                                 </tr>
                                 <tr>
                                     <td>BAKI AKAUN</td>
-                                    <td>0.00</td>
+                                    <td>{{ $account->baki_awal }}</td>
                                 </tr>
-                                
+
                             </table>
 
+                          </div>
                         </div>
-                        
+
                     </div>
 
                     <hr>
-                    
+                    <div class="table-responsive">
                     <table class="table table-bordered">
 
                         <thead>
@@ -72,28 +75,30 @@
                         </thead>
 
                         <tbody>
-
+                            @foreach( $account_details as $duk )
                             <tr>
-                                <td>{{ $account->id }}</td>
-                                <td>{{ $account->no_kelompok }}</td>
-                                <td>{{ $account->bayar_kepada }}</td>
-                                <td>{{ $account->keterangan }}</td>
-                                <td>{{ $account->bahagian_unit }}</td>
-                                <td>{{ $account->debit }}</td>
-                                <td>{{ $account->kredit }}</td>
-                                <td>{{ $account->kredit - $account->debit}}</td>
+                                <td>{{ $duk->id }}</td>
+                                <td>{{ $duk->no_kelompok }}</td>
+                                <td>{{ $duk->bayar_kepada }}</td>
+                                <td>{{ $duk->keterangan }}</td>
+                                <td>{{ $duk->bahagian_unit }}</td>
+                                <td>{{ $duk->debit }}</td>
+                                <td>{{ $duk->kredit }}</td>
+                                <td>{{ $duk->kredit - $duk->debit }}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-info">READ</a>
-                                    <a href="" class="btn btn-sm btn-danger">DELETE</a>
+                                  <a href="{{ route('duk.show', ['id' => $duk->id] ) }}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i></a>
+                                  <a href="{{ route('duk.edit', ['id' => $duk->id] ) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                  @include('duk/modal_delete')
                                 </td>
                             </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
+                </div><!-- /table-responsive -->
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

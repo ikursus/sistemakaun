@@ -4,29 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AccountDetail;
+use App\Account;
 
 class AkaunController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,10 +16,21 @@ class AkaunController extends Controller
      */
     public function simpan(Request $request)
     {
+        // Validasi data dari borang
+        $request->validate([
+            'tahun' => 'required',
+            'jenis_akaun' => 'required',
+            'jenis_akaun' => 'required',
+            'jenis_bank' => 'required',
+            'baki_awal' => 'required'
+        ]);
+
         // Dapatkan semua data daripada borang
         $data = $request->all();
 
-        return $data;
+        Account::create($data);
+
+        return redirect()->route('dashboard')->with('mesej-sukses', 'Rekod berjaya ditambah.');
     }
 
     /**
@@ -47,46 +39,16 @@ class AkaunController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($jenis_akaun)
     {
+        // Dapatkan data dari table accounts
+        $account = Account::where('jenis_akaun', '=', $jenis_akaun)->first();
+
         // Dapatkan detail maklumat akaun berdasarkan jenis akaun
-        $account = AccountDetail::where('jenis_akaun', '=', $id)->first();
+        $account_details = AccountDetail::where('jenis_akaun', '=', $jenis_akaun)->paginate(10);
 
         // Paparkan template detail bersama data account
-        return view('akaun/detail', compact('account'));
+        return view('akaun/detail', compact('account_details', 'jenis_akaun', 'account') );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
