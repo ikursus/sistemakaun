@@ -62,7 +62,11 @@ class DukController extends Controller
      */
     public function show($id)
     {
-        
+        // Dapatkan rekod duk berdasarkan ID
+        $duk = AccountDetail::find($id);
+
+        // Beri respon papar template read.blade.php
+        return view('duk/read', compact('duk') );
     }
 
     /**

@@ -13,11 +13,27 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('/tambah-maklumat-akaun', 'AkaunController@simpan')->name('akaun.simpan');
 Route::get('/detail-akaun/{id}', 'AkaunController@show')->name('akaun.show');
 
-// Tambah Data Unit Kewangan
-Route::get('/tambah-duk', 'DukController@create')->name('duk.create');
-Route::post('/tambah-duk', 'DukController@store')->name('duk.store');
+/*
+ * Route berkaitan Data Unit Kewangan
+ */
 
-// Maklumat users
+// Route paparkan template tambah rekod data unit kewangan
+Route::get('/data-unit-kewangan/add', 'DukController@create')->name('duk.create');
+// Route untuk proses data borang dan simpan rekod ke dalam table data unit kewangan (duk)
+Route::post('/data-unit-kewangan/add', 'DukController@store')->name('duk.store');
+// Route untuk paparkan maklumat duk berdasarkan ID
+Route::get('/data-unit-kewangan/{id}', 'DukController@show')->name('duk.show');
+// Route untuk proses datang borang dan kemaskini rekod ke dalam table duk berdasarkan ID yang dipilih.
+Route::get('/data-unit-kewangan/{id}/edit', 'DukController@edit')->name('duk.edit');
+// Route untuk proses datang borang dan kemaskini rekod ke dalam table duk berdasarkan ID yang dipilih.
+Route::patch('/data-unit-kewangan/{id}/edit', 'DukController@update')->name('duk.update');
+// Route untuk menghapuskan rekod duk berdasarkan ID
+Route::delete('/data-unit-kewangan/{id}', 'DukController@destroy')->where('id', '[0-9]+')->name('duk.destroy');
+
+/*
+ * Route berkaitan Maklumat User
+ */
+
 // Route paparkan senarai users
 Route::get('/senarai-users', 'UsersController@index')->name('users.index');
 // Route paparkan borang tambah user baru

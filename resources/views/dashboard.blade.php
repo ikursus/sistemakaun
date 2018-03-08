@@ -14,7 +14,7 @@
                         <div class="col-md-4">
 
                             @include('akaun/modal_tambah_maklumat_akaun')
-                            
+
                         </div>
                         <div class="col-md-8">
 
@@ -31,7 +31,7 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
 
                     <div class="row">
@@ -41,7 +41,7 @@
                             <select name="tahun" class="form-control">
                                 <option>{{ date('Y') }}</option>
                             </select>
-                            
+
                         </div>
                         <div class="col-md-8">
 
@@ -50,11 +50,11 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
 
                     <hr>
-                    
+
                     <table class="table table-bordered">
 
                         <thead>
@@ -81,7 +81,9 @@
                                 <td>{{ $item->keterangan }}</td>
                                 <td>{{ $item->kredit }}</td>
                                 <td>{{ str_replace('account_', 'Account ', $item->jenis_akaun) }}</td>
-                                <td></td>
+                                <td>
+                                  <a href="{{ route('duk.show', ['id' => $item->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i></a>
+                                </td>
                             </tr>
                             @endforeach
 
