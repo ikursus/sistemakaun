@@ -80,7 +80,7 @@
         </div>
         <input type="text" name="kredit" class="form-control">
   	</div>
-	
+
 </div>
 
 <div class="form-group">
@@ -111,6 +111,21 @@
 <div class="form-group">
 	<label for="tarikh_invois">TARIKH INVOIS</label>
 	<input type="date" name="tarikh_invois" class="form-control">
+</div>
+
+<div class="form-group">
+	<label for="no_cek">NO CEK</label>
+	<input type="text" name="no_cek" class="form-control">
+</div>
+
+<div class="form-group">
+	<label for="tahun">PILIH TAHUN</label>
+	<select name="tahun" class="form-control">
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+		<option value="2019">2019</option>
+		<option value="2020">2020</option>
+	</select>
 </div>
 				</div>
 				<div class="card-footer">

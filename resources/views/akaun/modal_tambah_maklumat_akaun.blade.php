@@ -45,8 +45,8 @@
 </div>
 
 <div class="form-group">
-	<label for="jenis_akaun">NO AKAUN</label>
-	<input type="text" name="no_akaun" placeholder="No Akaun Bank" class="form-control">
+	<label for="no_bank_akaun">NO AKAUN</label>
+	<input type="text" name="no_bank_akaun" placeholder="No Akaun Bank" class="form-control">
 </div>
 
 <div class="form-group">

@@ -20,16 +20,15 @@ class AkaunController extends Controller
         $request->validate([
             'tahun' => 'required',
             'jenis_akaun' => 'required',
-            'jenis_akaun' => 'required',
+            'no_bank_akaun' => 'required',
             'jenis_bank' => 'required',
             'baki_awal' => 'required'
         ]);
-
-        // Dapatkan semua data daripada borang
+        // Dapatkan semua data daripada borang tambah akaun di dashboard
         $data = $request->all();
-
+        // Simpan semua data ke dalam table accounts
         Account::create($data);
-
+        // Beri response kembali ke halaman dashboard bersama mesej sukses
         return redirect()->route('dashboard')->with('mesej-sukses', 'Rekod berjaya ditambah.');
     }
 
@@ -45,7 +44,8 @@ class AkaunController extends Controller
         $account = Account::where('jenis_akaun', '=', $jenis_akaun)->first();
 
         // Dapatkan detail maklumat akaun berdasarkan jenis akaun
-        $account_details = AccountDetail::where('jenis_akaun', '=', $jenis_akaun)->paginate(10);
+        $account_details = AccountDetail::where('jenis_akaun', '=', $jenis_akaun)
+        ->paginate(10);
 
         // Paparkan template detail bersama data account
         return view('akaun/detail', compact('account_details', 'jenis_akaun', 'account') );

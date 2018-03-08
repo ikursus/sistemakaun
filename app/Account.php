@@ -13,7 +13,7 @@ class Account extends Model
     protected $fillable = [
       'tahun',
       'jenis_akaun',
-      'jenis_akaun',
+      'no_bank_akaun',
       'jenis_bank',
       'baki_awal'
     ];

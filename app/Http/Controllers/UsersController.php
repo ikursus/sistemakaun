@@ -83,7 +83,7 @@ class UsersController extends Controller
         // Simpan data ke dalam table users
         DB::table('users')->insert($data);
 
-        // Beri response kembali ke halaman senarai users
+        // Beri response kembali ke halaman senarai users bersama mesej sukses
         return redirect()->route('users.index')->with('mesej-sukses', 'Rekod berjaya ditambah.');
 
     }
@@ -152,7 +152,7 @@ class UsersController extends Controller
             // Encrypt data password dan attach kepada array $data
             $data['password'] = bcrypt( $request->input('password') );
         }
-        
+
 
         // Simpan data ke dalam table users berdasarkan ID user
         DB::table('users')->where('id', '=', $id)->update($data);

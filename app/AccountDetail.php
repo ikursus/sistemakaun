@@ -10,7 +10,7 @@ class AccountDetail extends Model
 
     // Tetapkan fillable mass assignment (data - data yang boleh diisi oleh pengguna)
     protected $fillable = [
-    	'daripada',
+    	 'daripada',
         'bayar_kepada',
         'keterangan',
         'bahagian_unit',
@@ -25,6 +25,9 @@ class AccountDetail extends Model
         'no_baucar',
         'tarikh_baucar',
         'no_invois',
-        'tarikh_invois'
+        'tarikh_invois',
+        'no_cek',
+        'no_kelompok',
+        'tahun'
     ];
 }

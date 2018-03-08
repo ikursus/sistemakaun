@@ -13,7 +13,11 @@ Auth::routes();
 /*
  * Route berkaitan Ruangan Dashboard
  */
+// Papar maklumat account details
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+// Dapatkan rekod dari account details
+Route::get('/dashboard/datatables', 'DashboardController@datatables')->name('dashboard.datatables');
+
 
 /*
  * Route berkaitan Akaun

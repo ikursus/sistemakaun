@@ -9,6 +9,8 @@
 
                 <div class="card-body">
 
+                    @include('layouts/alerts')
+
                     <div class="row">
 
                         <div class="col-md-4">
@@ -57,7 +59,7 @@
 
                     <hr>
 
-                    <table class="table table-bordered">
+                    <table id="duk-table" class="table table-bordered">
 
                         <thead>
 
@@ -73,25 +75,6 @@
 
                         </thead>
 
-                        <tbody>
-
-                            @foreach( $account_details as $duk )
-                            <tr>
-                                <td>{{ $duk->id }}</td>
-                                <td>{{ $duk->no_baucar }}</td>
-                                <td>{{ $duk->bayar_kepada }}</td>
-                                <td>{{ $duk->keterangan }}</td>
-                                <td>{{ $duk->kredit }}</td>
-                                <td>{{ str_replace('account_', 'Account ', $duk->jenis_akaun) }}</td>
-                                <td>
-                                  <a href="{{ route('duk.show', ['id' => $duk->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i></a>
-                                  <a href="{{ route('duk.edit', ['id' => $duk->id]) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                  @include('/duk/modal_delete')
-                                </td>
-                            </tr>
-                            @endforeach
-
-                        </tbody>
                     </table>
 
                 </div>
@@ -99,4 +82,25 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+$(function() {
+    $('#duk-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('dashboard.datatables') !!}',
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'no_baucar', name: 'no_baucar' },
+            { data: 'bayar_kepada', name: 'bayar_kepada' },
+            { data: 'keterangan', name: 'keterangan' },
+            { data: 'kredit', name: 'kredit' },
+            { data: 'jenis_akaun', name: 'jenis_akaun' },
+            { data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    });
+});
+</script>
 @endsection
